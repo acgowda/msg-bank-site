@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}View{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  Here are up to up to 5 sample messages from the database.
+  <br>
+  {% for message in messages %}
+    <br>
+    <b>{{ message[0] }}:</b> "{{ message[1] }}"
+    <br>
+    <i>- {{ message[2] }}</i>
+    <br>
+  {% endfor %}
+{% endblock %}

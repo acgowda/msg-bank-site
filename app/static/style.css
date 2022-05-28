@@ -1,0 +1,87 @@
+/*
+background: white
+highlight: #A5BCD0
+darker highlight: #547DA0
+hover: #A2D6F9;
+text: black
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Lato');
+html {
+    background-color: white;
+    font-family: 'Lato', sans-serif;
+    font-size: 15px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1 {
+    margin: 1rem 0;
+    text-align: center;
+    font-size: 33px;
+}
+
+h2 {
+    margin: 1rem 0;
+    /*text-align: center;*/
+    font-size: 23px;
+}
+
+nav {
+    text-align: center;
+}
+
+nav ul {
+    /* center w/o sides */
+    /*display: inline-block; */
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #A5BCD0;
+}
+
+nav ul li {
+    /* left or center w/o sides */
+    float: left; 
+
+    /* center w/ sides */
+    /*display: inline;*/
+
+    /*border-right: 1px solid white;*/
+}
+
+nav ul li a {
+    /* left or center w/o sides */
+    display: block; 
+
+    /* center w/ sides */
+    /*display: inline-block;*/
+
+    color: black;
+    padding: 14px 16px;
+    text-decoration: none;
+    /*font-size: 15px;*/
+}
+
+nav ul li a:hover {
+    background-color: #547DA0;
+    color: #A2D6F9;
+}
+
+.active {
+    background-color: #547DA0;
+    color: #A2D6F9;
+}
+
+.content {
+    padding: 0 1rem 1rem;
+    /*border-radius: 25px;*/
+    /*border: 3px solid orange;*/
+}
+
+hr {
+    border: none;
+    border-top: 2px solid lightgray;
+}

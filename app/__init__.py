@@ -30,17 +30,17 @@ def submit():
     if request.method == 'GET':
         return render_template('submit.html')
     else:
-        #try:
-        # raise exception for empty fields
-        if request.form["name"] == '' or request.form["message"] == '':
-            raise ValueError('Empty fields.')
+        try:
+            # raise exception for empty fields
+            if request.form["name"] == '' or request.form["message"] == '':
+                raise ValueError('Empty fields.')
 
-        # call the database function if successful submission
-        insert_message(request)
+            # call the database function if successful submission
+            insert_message(request)
 
-        return render_template('submit.html', thanks=True)
-        #except:
-            #return render_template('submit.html', error=True)
+            return render_template('submit.html', thanks=True)
+        except:
+            return render_template('submit.html', error=True)
 
 def get_message_db():
     try:

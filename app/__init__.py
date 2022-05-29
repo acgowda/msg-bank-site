@@ -21,11 +21,11 @@ def submit():
     else:
         try:
             # raise exception for empty fields
-            if request.form["name"] == '' or request.form["message"] == '':
+            if request.form["handle"] == '' or request.form["message"] == '':
                 raise ValueError('Empty fields.')
 
             # call the database function if successful submission
-            insert_message(request)
+            insert_message()
 
             return render_template('submit.html', thanks=True)
         except:
@@ -43,21 +43,21 @@ def get_message_db():
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             handle TEXT NOT NULL,
             message TEXT NOT NULL
-        );
+        )
         '''
         cursor = g.message_db.cursor()
         cursor.execute(cmd)
 
         return g.message_db
 
-def insert_message(request):
+def insert_message():
     conn = get_message_db()
     
     # add the handle and message to the database
     cmd = \
     f'''
     INSERT INTO messages (handle, message)
-    VALUES ('{request.form["name"]}', '{request.form["message"]}') 
+    VALUES ('{request.form["handle"]}', '{request.form["message"]}') 
     '''
     cursor = conn.cursor()
     cursor.execute(cmd)
@@ -75,7 +75,7 @@ def random_messages(n):
     # get n random rows from the database
     cmd = \
     f'''
-    SELECT * FROM messages ORDER BY RANDOM() LIMIT 5; 
+    SELECT * FROM messages ORDER BY RANDOM() LIMIT {n}; 
     '''
     cursor = conn.cursor()
     cursor.execute(cmd)
@@ -83,5 +83,5 @@ def random_messages(n):
     # store results before closing the connection
     result = cursor.fetchall()
     conn.close()
-    
+
     return result
